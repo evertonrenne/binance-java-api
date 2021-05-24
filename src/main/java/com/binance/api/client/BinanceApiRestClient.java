@@ -14,6 +14,7 @@ import com.binance.api.client.domain.account.Trade;
 import com.binance.api.client.domain.account.TradeHistoryItem;
 import com.binance.api.client.domain.account.WithdrawHistory;
 import com.binance.api.client.domain.account.WithdrawResult;
+import com.binance.api.client.domain.account.request.AllOcoOrderStatusRequest;
 import com.binance.api.client.domain.account.request.AllOrdersRequest;
 import com.binance.api.client.domain.account.request.CancelOrderRequest;
 import com.binance.api.client.domain.account.request.CancelOrderResponse;
@@ -201,6 +202,14 @@ public interface BinanceApiRestClient {
    * @return an order
    */
   OcoOrderResponse getOcoOrderStatus(OcoOrderStatusRequest statusRequest);
+
+   /**
+   * Get all OCO orders; active, canceled, or filled.
+   *
+   * @param statusRequest
+   * @return a list of all OCO orders
+   */
+  List<OcoOrderResponse> getOcoAllOrders(AllOcoOrderStatusRequest statusRequest);
 
   /**
    * Cancel an active order.

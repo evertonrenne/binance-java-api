@@ -22,6 +22,7 @@ import com.binance.api.client.domain.account.Trade;
 import com.binance.api.client.domain.account.TradeHistoryItem;
 import com.binance.api.client.domain.account.WithdrawHistory;
 import com.binance.api.client.domain.account.WithdrawResult;
+import com.binance.api.client.domain.account.request.AllOcoOrderStatusRequest;
 import com.binance.api.client.domain.account.request.AllOrdersRequest;
 import com.binance.api.client.domain.account.request.CancelOrderRequest;
 import com.binance.api.client.domain.account.request.CancelOrderResponse;
@@ -189,6 +190,11 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
   public OcoOrderResponse getOcoOrderStatus(OcoOrderStatusRequest statusRequest) {
     return executeSync(binanceApiService.getOcoOrderStatus(statusRequest.getOrderListId(), statusRequest.getOrigClientOrderId(),
         statusRequest.getRecvWindow(), statusRequest.getTimestamp()));
+  }
+
+  @Override
+  public List<OcoOrderResponse> getOcoAllOrders(AllOcoOrderStatusRequest statusRequest) {
+    return executeSync(binanceApiService.getOcoAllOrders(statusRequest.getOrderListId(), statusRequest.getOrigClientOrderId(),statusRequest.getRecvWindow(), statusRequest.getTimestamp()));
   }
 
   @Override

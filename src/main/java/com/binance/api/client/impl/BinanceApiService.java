@@ -185,6 +185,10 @@ public interface BinanceApiService {
       @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
 
   @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+  @GET("/api/v3/allOrderList")
+  Call<List<OcoOrderResponse>> getOcoAllOrders(@Query("orderListId") Long orderListId, @Query("origClientOrderId") String origClientOrderId, @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
+
+  @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
   @DELETE("/api/v3/order")
   Call<CancelOrderResponse> cancelOrder(@Query("symbol") String symbol, @Query("orderId") Long orderId,
                                         @Query("origClientOrderId") String origClientOrderId, @Query("newClientOrderId") String newClientOrderId,
