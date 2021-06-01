@@ -43,6 +43,7 @@ import com.binance.api.client.domain.general.Asset;
 import com.binance.api.client.domain.general.ExchangeInfo;
 import com.binance.api.client.domain.general.ServerTime;
 import com.binance.api.client.domain.market.AggTrade;
+import com.binance.api.client.domain.market.AveragePrice;
 import com.binance.api.client.domain.market.BookTicker;
 import com.binance.api.client.domain.market.Candlestick;
 import com.binance.api.client.domain.market.OrderBook;
@@ -97,6 +98,9 @@ public interface BinanceApiService {
   Call<List<Candlestick>> getCandlestickBars(@Query("symbol") String symbol, @Query("interval") String interval, @Query("limit") Integer limit,
                                        @Query("startTime") Long startTime, @Query("endTime") Long endTime);
 
+  @GET("/api/v3/avgPrice")
+  Call<AveragePrice> getAveragePrice(@Query("symbol") String symbol);
+  
   @GET("/api/v1/ticker/24hr")
   Call<TickerStatistics> get24HrPriceStatistics(@Query("symbol") String symbol);
 

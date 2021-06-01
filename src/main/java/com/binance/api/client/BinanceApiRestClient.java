@@ -25,6 +25,7 @@ import com.binance.api.client.domain.account.request.SubAccountTransfer;
 import com.binance.api.client.domain.general.Asset;
 import com.binance.api.client.domain.general.ExchangeInfo;
 import com.binance.api.client.domain.market.AggTrade;
+import com.binance.api.client.domain.market.AveragePrice;
 import com.binance.api.client.domain.market.BookTicker;
 import com.binance.api.client.domain.market.Candlestick;
 import com.binance.api.client.domain.market.CandlestickInterval;
@@ -129,6 +130,14 @@ public interface BinanceApiRestClient {
    * @see #getCandlestickBars(String, CandlestickInterval, Integer, Long, Long)
    */
   List<Candlestick> getCandlestickBars(String symbol, CandlestickInterval interval);
+
+  /**
+   * Get average price in last minutes of symbol given by parameter
+   *
+   * @param symbol
+   * @return
+   */
+  AveragePrice getAveragePrice(String symbol);
 
   /**
    * Get 24 hour price change statistics.

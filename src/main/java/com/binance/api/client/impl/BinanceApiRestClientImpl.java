@@ -33,6 +33,7 @@ import com.binance.api.client.domain.account.request.SubAccountTransfer;
 import com.binance.api.client.domain.general.Asset;
 import com.binance.api.client.domain.general.ExchangeInfo;
 import com.binance.api.client.domain.market.AggTrade;
+import com.binance.api.client.domain.market.AveragePrice;
 import com.binance.api.client.domain.market.BookTicker;
 import com.binance.api.client.domain.market.Candlestick;
 import com.binance.api.client.domain.market.CandlestickInterval;
@@ -110,6 +111,11 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
   @Override
   public List<Candlestick> getCandlestickBars(String symbol, CandlestickInterval interval) {
     return getCandlestickBars(symbol, interval, null, null, null);
+  }
+
+  @Override
+  public AveragePrice getAveragePrice(String symbol) {
+    return executeSync(binanceApiService.getAveragePrice(symbol));
   }
 
   @Override
